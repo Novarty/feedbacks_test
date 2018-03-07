@@ -1,0 +1,16 @@
+h1 Listing feedbacks
+
+table
+  thead
+    tr
+      th Name
+      th Email
+      th Text
+
+
+  tbody
+    - feedbacks.each do |feedback|
+      tr
+        td = feedback.name
+        td = feedback.email
+        td = feedback.body

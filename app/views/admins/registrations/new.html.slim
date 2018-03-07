@@ -16,7 +16,6 @@
         | account
 
       .form-inputs
-        = f.input :full_name, required: true, autofocus: true
         = f.input :email, required: true
         = f.input :password, required: true
         = f.input :password_confirmation, required: true
@@ -25,8 +24,8 @@
         = f.button :submit, "Sign up"
 
   .medium-5.medium-offset-1.columns.end
-    = render "users/shared/links"
+    = render "admins/shared/links"
     hr
-    = link_to 'Sign up as admin', new_admin_registration_path
+    = link_to 'Sign up as user', new_user_registration_path
     br
-    = link_to 'Sign in as admin', new_admin_session_path
+    = link_to 'Sign in as user', new_user_session_path
