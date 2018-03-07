@@ -1,13 +1,16 @@
 h1 Listing feedbacks
-
+ul.top-bar-right.menu
+      form.form-group
+        = form_tag admins_feedbacks_path, method: :get do
+          = text_field_tag :search, params[:search], placeholder: 'Search',
+          class: 'right inline'
+          = submit_tag 'Search', name: nil
 table
   thead
     tr
-      th Name
+      th Sender name
       th Email
-      th Text
-
-
+      th Message
   tbody
     - feedbacks.each do |feedback|
       tr

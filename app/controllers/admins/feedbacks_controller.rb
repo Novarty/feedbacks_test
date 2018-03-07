@@ -1,17 +1,14 @@
 class Admins::FeedbacksController < ApplicationController
-  before_action :set_feedback, only: :show
-  expose :feedbacks, -> { Feedback.all }
+  before_action :authenticate_admin!
+  expose :feedbacks, -> { init_feedbacks }
 
-  def index
-    # @feedbacks = Feedback.all
-  end
-
-  def show
-  end
+  def index; end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_feedback
-      feedback = Feedback.find(params[:id])
-    end
+
+  def init_feedbacks
+    feedbacks = Feedback.order(created_at: :desc).all
+    feedbacks = feedbacks.where("name ILIKE ? OR body ILIKE ?", "%#{params[:search]}%","%#{params[:search]}%") if params[:search]
+    feedbacks # returns
+  end
 end

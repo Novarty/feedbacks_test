@@ -22,6 +22,7 @@ end
 
 # views
 gem "active_link_to"
+gem 'kaminari'
 gem "inky-rb", require: "inky"
 gem "meta-tags"
 gem "simple_form"
