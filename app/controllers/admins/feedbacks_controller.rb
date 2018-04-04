@@ -7,8 +7,10 @@ class Admins::FeedbacksController < ApplicationController
   private
 
   def init_feedbacks
-    feedbacks = Feedback.order(created_at: :desc).all
-    feedbacks = feedbacks.where("name ILIKE ? OR body ILIKE ?", "%#{params[:search]}%","%#{params[:search]}%") if params[:search]
-    feedbacks # returns
+    feedbacks = Feedback.order(created_at: :desc)
+    feedbacks = feedbacks.where("name ILIKE ? OR body ILIKE ?",
+      "%#{params[:search]}%",
+      "%#{params[:search]}%") if params[:search]
+    feedbacks.page(params[:page]) # returns
   end
 end

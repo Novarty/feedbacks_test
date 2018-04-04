@@ -1,10 +1,12 @@
 h1 Listing feedbacks
-ul.top-bar-right.menu
-      form.form-group
-        = form_tag admins_feedbacks_path, method: :get do
-          = text_field_tag :search, params[:search], placeholder: 'Search',
-          class: 'right inline'
-          = submit_tag 'Search', name: nil
+ul.top-bar-left.menu
+  form.input-group
+    = form_tag admins_feedbacks_path, method: :get do
+      = text_field_tag :search, params[:search], placeholder: 'Search',
+      class: 'input-group-field'
+      = submit_tag 'Search', name: nil, class: 'button'
+.center
+  = paginate feedbacks
 table
   thead
     tr
@@ -17,4 +19,5 @@ table
         td = feedback.name
         td = feedback.email
         td = feedback.body
-/ = paginate feedbacks
+.center
+  = paginate feedbacks

@@ -2,7 +2,12 @@ class Users::FeedbacksController < ApplicationController
   expose :feedback
 
   # GET /feedbacks/new
-  def new; end
+  def new
+    if current_user
+      feedback.name = current_user.full_name
+      feedback.email = current_user.email
+    end
+  end
 
   # POST /feedbacks
   def create

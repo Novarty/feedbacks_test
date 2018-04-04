@@ -1,14 +1,6 @@
 = simple_form_for [:users, feedback] do |f|
   = f.error_notification
-  - unless current_user.nil?
-    = f.input :name, required: true,
-      hint: 'You can change your username on your profile page.',
-      :input_html => { :value => current_user.full_name }
-    = f.input :email, required: true,
-      hint: 'You can change your email on your profile page.',
-      :input_html => { :value => current_user.email }
-  - else
-    = f.input :name, required: true, label: 'Full name'
-    = f.input :email, placeholder: 'user@domain.com', required: true
+  = f.input :name, required: true, label: 'Full name'
+  = f.input :email, placeholder: 'user@domain.com', required: true
   = f.input :body, as: :text, required: true, label: 'Message'
   = f.button :submit, 'Send feedback'
